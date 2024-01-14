@@ -7,6 +7,8 @@ import { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
+import {GoogleAnalytics} from './analytics'
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -129,6 +131,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={fontSans.variable}>
+        <GoogleAnalytics />
         <div className="bg-white font-sans">
           {children}
           <VercelAnalytics />
