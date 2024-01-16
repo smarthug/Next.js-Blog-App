@@ -22,7 +22,7 @@ import Script from "next/script"
 
 
 export function GoogleAnalytics() {
-    console.log(process.env.NEXT_PUBLIC_GA)
+    // console.log(process.env.NEXT_PUBLIC_GA)
     return (
         <>
             <Script strategy="lazyOnload" async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA}`}></Script>
