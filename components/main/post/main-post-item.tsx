@@ -47,8 +47,8 @@ interface MainPostItemProps {
 }
 
 const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
-  const readTime = readingTime(post.content ? post.content : "");
-  const comments = await getComments(post.id ? post.id : "");
+  const readTime = readingTime(post.description ? post.description : "");
+  // const comments = await getComments(post.id ? post.id : "");
 
   return (
     <>
@@ -58,8 +58,9 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
           <Link href={`/posts/${post.id}`}>
             <article className="relative isolate flex max-w-3xl flex-col gap-2 rounded-lg bg-white px-5 py-5 shadow-md shadow-gray-300 ring-1 ring-black/5 sm:gap-8 sm:px-10 sm:py-6 lg:flex-row">
               <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-                {/* <Image
-                  src={await getPublicImageUrl(post.id, post.image || "")}
+                <Image
+                  // src={await getPublicImageUrl(post.id, post.image || "")}
+                  src={post.image}
                   alt={post.title ?? "Cover"}
                   height={256}
                   width={256}
@@ -68,7 +69,7 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                     shimmer(256, 256),
                   )}`}
                   className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
-                /> */}
+                />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
               </div>
               <div>
@@ -94,7 +95,7 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                     <div className="inline-flex items-center text-gray-500">
                       <CalendarIcon className="h-4 w-4" />
                       <span className="ml-1">
-                        {/* {format(parseISO(post.updated_at!), "dd/MM/yyyy")} */}
+                        {format(parseISO(post.created_at!), "MMMM dd, yyyy")}
                       </span>
                     </div>
                     <div className="inline-flex items-center text-gray-500">
@@ -112,7 +113,8 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                     <div className="inline-flex items-center text-gray-500">
                       <CalendarIcon className="h-4 w-4" />
                       <span className="ml-1">
-                        {/* {format(parseISO(post.updated_at!), "MMMM dd, yyyy")} */}
+                        {format(parseISO(post.created_at!), "MMMM dd, yyyy")}
+                        {/* {post.created_at} */}
                       </span>
                     </div>
                     <div className="inline-flex items-center text-gray-500">
@@ -123,14 +125,14 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                     </div>
                     <div className="inline-flex items-center text-gray-500">
                       <MessageCircleIcon className="h-4 w-4" />
-                      <span className="ml-1">{comments?.length}</span>
+                      {/* <span className="ml-1">{comments?.length}</span> */}
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-3 flex border-t border-gray-900/5 pt-2">
                   <div className="relative flex items-center gap-x-2">
-                    <Image
+                    {/* <Image
                       src={post.profiles?.avatar_url ?? "/images/avatar.png"}
                       alt={post.profiles?.full_name ?? "Avatar"}
                       height={40}
@@ -140,10 +142,11 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                         shimmer(40, 40),
                       )}`}
                       className="h-[40px] w-[40px] rounded-full bg-gray-50 object-cover"
-                    />
+                    /> */}
                     <div className="text-sm">
                       <p className="font-semibold text-gray-900">
                         {/* {post.profiles.full_name} */}
+                        BlockMoment
                       </p>
                       <p className="text-gray-600">{mainPostConfig.author}</p>
                     </div>
