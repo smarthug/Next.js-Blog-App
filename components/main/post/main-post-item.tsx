@@ -60,10 +60,10 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
               <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
                 <Image
                   // src={await getPublicImageUrl(post.id, post.image || "")}
-                  src={post.image}
+                  src={post.image ?? ""}
                   alt={post.title ?? "Cover"}
-                  height={256}
-                  width={256}
+                  height={1080}
+                  width={1920}
                   priority
                   placeholder={`data:image/svg+xml;base64,${toBase64(
                     shimmer(256, 256),
