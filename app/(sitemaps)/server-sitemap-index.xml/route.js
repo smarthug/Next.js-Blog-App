@@ -5,7 +5,7 @@ export async function GET(request) {
   // const urls = await fetch('https//example.com/api')
 
   return getServerSideSitemapIndex([
-    'https://example.com/path-1.xml',
-    'https://example.com/path-2.xml',
+    'https://blockmoment.com/server-sitemap.xml',
+    // 'https://blockmoment.com/path-2.xml',
   ])
 }
