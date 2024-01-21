@@ -1,20 +1,20 @@
 import { SeoType } from "types";
 
 export const seoData: SeoType = {
-  title: "Multi-user, full-stack blogging application",
+  title: "BlockMoment",
   subTitle:
-    "Multi-user, full-stack blogging app built with Next.js and Supabase",
-  absoluteTitle: "Next.js | Blog app",
-  ogTitle: "Next.js | Supabase | Blog app",
+    "BlockMoment",
+  absoluteTitle: "BlockMoment",
+  ogTitle: "BlockMoment",
   author: {
-    name: "Tim",
-    twitterUrl: "https://twitter.com/timtbdev",
-    twitterAddress: "@timtbdev",
+    name: "BlockMoment",
+    twitterUrl: "https://twitter.com/BlockMoment",
+    twitterAddress: "@BlockMoment",
   },
   description:
-    "Multi-user, Fullstack, Blogging, applicaiton, blog, app, Next.js, Supabase, Supabase Database, Supabase Auth, Supabase Storage, TailwindCSS, TypeScript, Shadcn-ui, Radix-ui, HeadlessUi, NodeMailer, ConvertKit, Vercel OG, React-Hook-Form, React-Drop-Zone, Zod, HeroIcons, Lucide, Novel, Vaul, Uppy",
+    "BlockMoment",
   keywords: [
-    "Multi-user, Fullstack, Blogging, applicaiton, blog, app, Next.js, Supabase, Supabase Database, Supabase Auth, Supabase Storage, TailwindCSS, TypeScript, Shadcn-ui, Radix-ui, HeadlessUi, NodeMailer, ConvertKit, Vercel OG, React-Hook-Form, React-Drop-Zone, Zod, HeroIcons, Lucide, Novel, Vaul, Uppy",
+    "BlockMoment",
   ],
-  tags: ["Next.js", "Supabase", "TailwindCSS"],
+  tags: ["Next.js", "Supabase", "TailwindCSS","BlockMoment"],
 };
