@@ -55,10 +55,10 @@ const MainAboutPage = () => {
           className="flex justify-center items-center my-4"
         >
           <Image
-            src="/images/opinion/dragon/1.jpg"
+            src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/openGraph/1.JPG"
             alt="1"
-            width={1000}
-            height={500}
+            width={1920}
+            height={1080}
           />
         </div>
         <br />
@@ -129,10 +129,10 @@ const MainAboutPage = () => {
         >
 
           <Image
-            src="/images/opinion/dragon/2.jpg"
+            src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/openGraph/2.JPG"
             alt="1"
-            width={1000}
-            height={1000}
+            width={1920}
+            height={1080}
           />
         </div>
         <h3 className="text-2xl font-bold my-6">
