@@ -2,10 +2,10 @@ import Image from 'next/image';
 
 const MainAboutPage = () => {
   return (
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold my-6">핀시아와 클레이튼 1:1? &quot;2배를 줘도 안합니다.&quot;</h1>
-      <p class="mb-4">지난 1월 16일, 국내 암호화폐에서는 말 그대로 &quot;지각변동&quot;을 일으킬만한 발표가 있었습니다.</p>
-      <p class="mb-4">바로 &quot;클레이튼(Klaytn)과 핀시아(Finschia)의 통합 제안 발의&quot;였는데요.<br />
+    <div className="container mx-auto px-4">
+      <h1 className="text-3xl font-bold my-6">핀시아와 클레이튼 1:1? &quot;2배를 줘도 안합니다.&quot;</h1>
+      <p className="mb-4">지난 1월 16일, 국내 암호화폐에서는 말 그대로 &quot;지각변동&quot;을 일으킬만한 발표가 있었습니다.</p>
+      <p className="mb-4">바로 &quot;클레이튼(Klaytn)과 핀시아(Finschia)의 통합 제안 발의&quot;였는데요.<br />
 
         1월 16일 핀시아의 FGP(Finschia Governance Proposal)과 KGP(Klaytn Governance Proposal)에는 각각 핀시아와 클레이튼을 통합해 새로운 &quot;프로젝트 드래곤&quot;으로 탄생시킨다는 제안이 올라왔습니다.<br />
         <br />
@@ -39,7 +39,10 @@ const MainAboutPage = () => {
         <br />
         이렇게 반응이 엇갈리는 이유는 몇 가지로 요약될 수 있습니다.<br />
         <br />
-        1. FNSA와 KLAY의 물량과 가격 문제<br />
+        <h3 className="text-2xl font-bold my-6">
+
+          1. FNSA와 KLAY의 물량과 가격 문제<br />
+        </h3>
         <br />
         현재 FNSA의 유통량은 약 752만개로, KLAY의 유통량인 약 46억개에 비해 상당히 작습니다. 가격으로 비율을 환산해보면 PDT에서 FNSA 홀더들이 차지할 비율은 약 15.9%, 그리고 클레이튼 홀더들이 차지할 비율은 49.8%로 압도적으로 클레이튼 홀더들이 많습니다.<br />
         <br />
@@ -49,7 +52,7 @@ const MainAboutPage = () => {
         <br />
         실제로 현재 핀시아의 디스코드에서는 &quot;1:1이 아니라 두 배, 그 이상을 줘도 안한다&quot;라는 이야기가 나오고 있는 상황입니다.<br />
         <div
-          class="flex justify-center items-center my-4"
+          className="flex justify-center items-center my-4"
         >
           <Image
             src="/images/opinion/dragon/1.jpg"
@@ -59,11 +62,17 @@ const MainAboutPage = () => {
           />
         </div>
         <br />
-        2. 클레이튼의 미유통량 처리의 적법성 문제<br />
+        <h3 className="text-2xl font-bold my-6">
+
+          2. 클레이튼의 미유통량 처리의 적법성 문제<br />
+        </h3>
         <br />
         클레이튼은 상장 후 유독 ICO와 유통물량에 대한 문제 지적이 꼬리표로 따라왔습니다. 특히 클레이튼의 유통량 대비 미유통량의 비중은 52.21%에 달할 만큼 큰데, 이번 통합으로 클레이튼은 약 16억 5천만개의 클레이튼에 달하는 16억 5천만개의 PDT를 소각한다고 밝혔습니다만, 그럼에도 불구하고 남은 미유통량인 7억 5천만개의 KLAY는 남아있게 됩니다. 이러한 일부 물량은 약 2000억원으로, 이를 라인넥스트에 5년간 지급한다고 합니다만, 이러한 과정에 대한 적법성과 의혹 또한 문제시 되고 있습니다.<br />
         <br />
-        3. 프로젝트 드래곤의 잠재성과 비전의 불확실성<br />
+        <h3 className="text-2xl font-bold my-6">
+
+          3. 프로젝트 드래곤의 잠재성과 비전의 불확실성<br />
+        </h3>
         <br />
         현재 두 암호화폐 프로젝트의 사업 현황을 보면, 클레이튼은 EVM 개발자들을 위한 개발생태계는 무척이나 잘 만들고 있습니다만, 그에 비해 주도적으로 진행하는 사업 컨텐츠나 Grant Program과 같은 참여 프로그램을 축소하는 등 사실상 덩치는 크지만 비전은 상대적으로 부족한 모습을 보였습니다.<br />
         <br />
@@ -101,7 +110,11 @@ const MainAboutPage = () => {
         <br />
         이렇게 반응이 엇갈리는 이유는 몇 가지로 요약될 수 있습니다.<br />
         <br />
-        1. FNSA와 KLAY의 물량과 가격 문제<br />
+
+        <h3 className="text-2xl font-bold my-6">
+
+          1. FNSA와 KLAY의 물량과 가격 문제<br />
+        </h3>
         <br />
         현재 FNSA의 유통량은 약 752만개로, KLAY의 유통량인 약 46억개에 비해 상당히 작습니다. 가격으로 비율을 환산해보면 PDT에서 FNSA 홀더들이 차지할 비율은 약 15.9%, 그리고 클레이튼 홀더들이 차지할 비율은 49.8%로 압도적으로 클레이튼 홀더들이 많습니다.<br />
         <br />
@@ -112,7 +125,7 @@ const MainAboutPage = () => {
         실제로 현재 핀시아의 디스코드에서는 &quot;1:1이 아니라 두 배, 그 이상을 줘도 안한다&quot;라는 이야기가 나오고 있는 상황입니다.<br />
         <br />
         <div
-          class="flex justify-center items-center my-4"
+          className="flex justify-center items-center my-4"
         >
 
           <Image
@@ -122,11 +135,17 @@ const MainAboutPage = () => {
             height={1000}
           />
         </div>
-        2. 클레이튼의 미유통량 처리의 적법성 문제<br />
+        <h3 className="text-2xl font-bold my-6">
+
+          2. 클레이튼의 미유통량 처리의 적법성 문제
+        </h3>
         <br />
         클레이튼은 상장 후 유독 ICO와 유통물량에 대한 문제 지적이 꼬리표로 따라왔습니다. 특히 클레이튼의 유통량 대비 미유통량의 비중은 52.21%에 달할 만큼 큰데, 이번 통합으로 클레이튼은 약 16억 5천만개의 클레이튼에 달하는 16억 5천만개의 PDT를 소각한다고 밝혔습니다만, 그럼에도 불구하고 남은 미유통량인 7억 5천만개의 KLAY는 남아있게 됩니다. 이러한 일부 물량은 약 2000억원으로, 이를 라인넥스트에 5년간 지급한다고 합니다만, 이러한 과정에 대한 적법성과 의혹 또한 문제시 되고 있습니다.<br />
         <br />
-        3. 프로젝트 드래곤의 잠재성과 비전의 불확실성<br />
+        <h3 className="text-2xl font-bold my-6">
+
+          3. 프로젝트 드래곤의 잠재성과 비전의 불확실성<br />
+        </h3>
         <br />
         현재 두 암호화폐 프로젝트의 사업 현황을 보면, 클레이튼은 EVM 개발자들을 위한 개발생태계는 무척이나 잘 만들고 있습니다만, 그에 비해 주도적으로 진행하는 사업 컨텐츠나 Grant Program과 같은 참여 프로그램을 축소하는 등 사실상 덩치는 크지만 비전은 상대적으로 부족한 모습을 보였습니다.<br />
         <br />
@@ -134,9 +153,9 @@ const MainAboutPage = () => {
         <br />
         이러한 상황에서 핀시아와 클레이튼이 통합된다는 것은, 마치 대기업이 높은 성장율의 스타트업을 인수합병하는 모습과 같습니다. 그렇다면, 그동안 스타트업에 투자했던 투자자들은 높은 기대수익을 예상할 수 있습니다만, 현재는 그저 1:1의 교환비로 지분을 팔 수밖에 없다는 것입니다.<br />
       </p>
-      <p class="mb-4">자, 이렇게 핀시아와 클레이튼의 각 홀더 입장에서 프로젝트 드래곤의 출범 가능성에 대한 이야기를 해봤습니다.</p>
+      <p className="mb-4">자, 이렇게 핀시아와 클레이튼의 각 홀더 입장에서 프로젝트 드래곤의 출범 가능성에 대한 이야기를 해봤습니다.</p>
 
-      <h2 class="text-xl font-bold my-4">+ 추가 소식</h2>
+      <h2 className="text-xl font-bold my-4">+ 추가 소식</h2>
       <p>1월 19일 한국시간 오후 8시에 진행된 클레이튼 재단과 핀시아 재단의 AMA에서, 커뮤니티의 여러 의견을 반영하여 FNSA와 KLAY의 PDT로의 교환비를 수정한 일부 개정안을 내놓을 것이라고 발표하였습니다. 현재 핀시아의 디스코드 반응은 전체적으로 부정적이면서도 개정안에 대해서 다소 기대하고 있는 모습입니다.</p>
     </div>
   )
