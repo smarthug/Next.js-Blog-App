@@ -50,6 +50,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "lirimnaqhglyehdfwelj.supabase.co",
       },
+      {
+        protocol: "https",
+        hostname: "blockmoment.com"
+      }
     ],
   },
 };
