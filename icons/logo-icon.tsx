@@ -1,6 +1,5 @@
-import { FC } from "react";
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import React, { FC } from "react";
 
 interface LogoIconProps {
   className?: string;
@@ -35,24 +34,20 @@ interface LogoIconProps {
 //   );
 // };
 
-
-
-
-const LogoIcon = ({ width = 48, height = 48 }) => {
-    return (
-        <div>
-            <Image
-                src="/favicons/android-chrome-192x192.png" // Replace with the path to your Next.js logo image in the public folder
-                alt="Next.js Logo"
-                width={width}
-                height={height}
-                layout="intrinsic" // This can be 'fixed', 'intrinsic', 'responsive', or 'fill'. Adjust as needed.
-            />
-        </div>
-    )
-}
+const LogoIcon = ({ className = "" }) => {
+  return (
+    <div className={className}>
+      <Image
+        src="/favicons/android-chrome-192x192.png" // Replace with the path to your Next.js logo image in the public folder
+        alt="Next.js Logo"
+        width={48}
+        height={48}
+        layout="intrinsic" // This can be 'fixed', 'intrinsic', 'responsive', or 'fill'. Adjust as needed.
+      />
+    </div>
+  );
+};
 
 // export default NextJsLogo
-
 
 export default LogoIcon;
