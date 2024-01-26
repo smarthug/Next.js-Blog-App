@@ -179,9 +179,9 @@ export default async function PostPage({ params }: PostPageProps) {
               <div className="relative mx-auto max-w-4xl py-2">
                 {/* Heading */}
                 <DetailPostHeading
-                  id={post.id}
-                  title={post.title as string}
-                  image={post.image as string}
+                  id={post?.id ?? ''}
+                  title={post?.title as string}
+                  image={post?.image as string}
                   // authorName={post.profiles.full_name as string}
                   // authorImage={post.profiles.avatar_url as string}
                   date={format(parseISO(post?.created_at!), "MMMM dd, yyyy")}
@@ -196,7 +196,7 @@ export default async function PostPage({ params }: PostPageProps) {
                       TLDR
                     </h2>
                     <ul className="mt-2 list-disc space-y-2 pl-5">
-                      <li className="text-gray-700">{post.tldr}</li>
+                      <li className="text-gray-700">{post?.tldr}</li>
                       {/* <li className="text-gray-700">
                         Key point 2 of the article.
                       </li>
