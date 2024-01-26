@@ -50,20 +50,15 @@ async function getPost(params: { slug: string[] }) {
   //   .match({ slug: slug, published: false })
   //   .single<PostWithCategoryWithProfile>();
 
-
-    const response = await supabase
+  const response = await supabase
     .from("news")
     .select(`*`)
     .match({ id: slug })
     .single<PostWithCategoryWithProfile>();
 
-
-
   if (!response.data) {
     // notFound;
   }
-
-  
 
   return response.data;
 }
@@ -82,14 +77,14 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.description,
+    description: post.tldr,
     authors: {
       name: seoData.author.name,
       url: seoData.author.twitterUrl,
     },
     openGraph: {
       title: post.title as string,
-      description: post.description as string,
+      description: post.tldr as string,
       type: "article",
       url: getUrl() + slug,
       images: [
@@ -109,7 +104,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: post.title as string,
-      description: post.description as string,
+      description: post.tldr as string,
       images: [
         getOgImageUrl(
           post.title as string,
@@ -183,18 +178,34 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="mx-auto max-w-4xl rounded-lg bg-white px-6 py-4 shadow-sm shadow-gray-300 ring-1 ring-black/5 sm:px-14 sm:py-10">
               <div className="relative mx-auto max-w-4xl py-2">
                 {/* Heading */}
-                {/* <DetailPostHeading
+                <DetailPostHeading
                   id={post.id}
                   title={post.title as string}
                   image={post.image as string}
-                  authorName={post.profiles.full_name as string}
-                  authorImage={post.profiles.avatar_url as string}
-                  date={format(parseISO(post.updated_at!), "MMMM dd, yyyy")}
-                  category={post.categories?.title as string}
-                  readTime={readTime as ReadTimeResults}
-                /> */}
+                  // authorName={post.profiles.full_name as string}
+                  // authorImage={post.profiles.avatar_url as string}
+                  date={format(parseISO(post?.created_at!), "MMMM dd, yyyy")}
+                  // category={post.categories?.title as string}
+                  // readTime={readTime as ReadTimeResults}
+                />
                 {/* Top Floatingbar */}
                 <div className="mx-auto">
+                  <div></div>
+                  <div className="rounded-lg border border-gray-300 bg-gray-100 p-4">
+                    <h2 className="text-lg font-semibold text-gray-800">
+                      TLDR
+                    </h2>
+                    <ul className="mt-2 list-disc space-y-2 pl-5">
+                      <li className="text-gray-700">{post.tldr}</li>
+                      {/* <li className="text-gray-700">
+                        Key point 2 of the article.
+                      </li>
+                      <li className="text-gray-700">
+                        Key point 3 of the article, etc.
+                      </li> */}
+                    </ul>
+                  </div>
+
                   {/* <DetailPostFloatingBar
                     id={post.id as string}
                     title={post.title as string}

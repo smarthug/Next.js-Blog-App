@@ -26,7 +26,7 @@ const MainDesktopNavigation = () => {
 
         {/* Login Menu */}
         <div className="flex flex-1 justify-end">
-          <LoginMenu />
+          {/* <LoginMenu /> */}
         </div>
       </nav>
     </>

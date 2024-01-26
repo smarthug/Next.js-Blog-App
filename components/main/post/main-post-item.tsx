@@ -106,7 +106,7 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                     </div>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600">
-                    {post.description}
+                    {post.tldr}
                   </p>
                   {/* Desktop toolbar view */}
                   <div className="mt-3 hidden items-center gap-x-3 text-sm sm:flex">
