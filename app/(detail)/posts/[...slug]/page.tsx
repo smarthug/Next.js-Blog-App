@@ -138,8 +138,8 @@ export default async function PostPage({ params }: PostPageProps) {
   const supabase = createClient(cookieStore);
   // Get post data
   const post = await getPost(params);
-  console.log("post");
-  console.log(post);
+  // console.log("post");
+  // console.log(post);
   if (!post) {
     // notFound();
   }
