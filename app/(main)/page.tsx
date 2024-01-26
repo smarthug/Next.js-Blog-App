@@ -22,7 +22,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     .from("news")
     .select("*", { count: "exact", head: true });
 
-  console.log(count);
+  // console.log(count);
 
   // Pagination
   const limit = 10;

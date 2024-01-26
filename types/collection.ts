@@ -24,6 +24,7 @@ export interface PostWithCategory extends Omit<Post, "categories"> {
 export interface PostWithCategoryWithProfile
   extends Omit<PostWithCategory, "profiles"> {
   profiles: Profile;
+  tldr: string;
 }
 
 export interface CategoryWithPost extends Omit<Category, "posts"> {
