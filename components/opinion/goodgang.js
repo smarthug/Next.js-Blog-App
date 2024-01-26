@@ -8,7 +8,21 @@ const MainAboutPage = () => {
             <p className="mb-4">2024년 1월 26일, 드디어 클레이튼(Klaytn)과 핀시아(Finschia)의 통합 프로젝트인 &quot;프로젝트 드래곤(PDT)&quot; 제안의 거버넌스 투표가 시작되었습니다.<br /><br /></p>
             <br /><br />
             <p className="mb-4">투표가 있기 하루 전, 핀시아 재단에서는 지난 19일 치뤄진 AMA에서의 약속대로 통합 개정안을 내놨습니다. 개정안의 주요 내용은 다음과 같습니다.<br /><br /></p>
-            <br /><br />
+            <br />
+
+            <div
+                className="flex justify-center items-center my-4"
+            >
+
+                <Image
+                    src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/02.JPG"
+                    alt="1"
+                    width={1920}
+                    height={1080}
+                />
+
+            </div>
+            <br />
             <p className="mb-4 text-1xl font-bold my-6">1. FNSA:PDT의 교환비 및 생태계 기여자 보상 미비 -&gt; 온체인 기여자 보상 8,000만 PDT<br /><br /></p>
             <br /><br />
             <p className="mb-4 text-1xl font-bold my-6">2. 통합 후 KLAY와 FNSA의 공급량 차이로 인한 유저 거버넌스 차이 -&gt; 최대 4,000만 PDT를 핀시아 거버넌스 3개 참가사에 지원함.<br /><br /></p>
@@ -42,69 +56,58 @@ const MainAboutPage = () => {
                     width={1920}
                     height={1080}
                 />
-                
-                
+
+
             </div>
+
 
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
-                    src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/02.JPG"
-                    alt="1"
-                    width={1920}
-                    height={1080}
-                />
-                
-            </div>
-            <div
-                className="flex justify-center items-center my-4"
-            >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/3.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/4.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/5.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/6.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
 
             <br />
@@ -113,56 +116,56 @@ const MainAboutPage = () => {
             <p className="mb-4 text-1xl font-bold my-6">2. 1월 19일, 커뮤니티 의견을 적극 반영할 것이지만?<br /><br /></p>
 
             <br />
-          
+
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/7.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/8.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/9.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/10.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
-            
+
             <br />
             <p className="mb-4">1월 18일에도 밝혔듯이, 굳갱랩스의 대표는 &quot;프로포절 업데이트 시, 커뮤니티의 의견 듣고, 내부 논의 후 의사 결정을 할 예정이다. 팀과 커뮤니티의 의사 결정이 다르다면, 재단에 요청하여 굳갱노드에 FNSA를 예치한 스테이커들이 다른 노드로 재예치할 시간을 확보할 것이며, 재단이 요청을 받아들이지 않는다면 비어갱 홀더 전체 투표를 통해 의사결정을 진행할 것&quot;이라고 발표하였습니다.<br /><br /></p>
             <br /><br />
@@ -173,18 +176,18 @@ const MainAboutPage = () => {
             <p className="mb-4 text-1xl font-bold my-6">3. 1월 25일, 돌연 &quot;찬성&quot;의견 발표<br /><br /></p>
 
             <br />
-            
+
             <div
                 className="flex justify-center items-center my-4"
             >
-                
-                 <Image
+
+                <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/11.png"
                     alt="1"
                     width={1920}
                     height={1080}
                 />
-                
+
             </div>
             <br />
             <p className="mb-4">1월 25일, 굳갱랩스 대표는 돌연 통합 건에 대한 &quot;찬성&quot; 의견을 밝혔습니다. 투표를 하루 앞두고 이뤄진 이 발표에 대해 핀시아 홀더들은 대단히 황당하다는 분위기입니다. 찬성의 이유는 다음과 같습니다.<br /><br /></p>
