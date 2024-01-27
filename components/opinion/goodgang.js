@@ -17,8 +17,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/02.JPG"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -53,8 +53,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/1.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
 
@@ -68,8 +68,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/3.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -80,8 +80,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/4.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -92,8 +92,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/5.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -104,8 +104,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/6.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -124,8 +124,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/7.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -136,8 +136,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/8.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -148,8 +148,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/9.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -160,8 +160,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/10.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>
@@ -184,8 +184,8 @@ const MainAboutPage = () => {
                 <Image
                     src="https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/goodgang/11.png"
                     alt="1"
-                    width={1920}
-                    height={1080}
+                    width={500}
+                    height={500}
                 />
 
             </div>

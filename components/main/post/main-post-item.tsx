@@ -62,12 +62,10 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
                   // src={await getPublicImageUrl(post.id, post.image || "")}
                   src={post.image ?? ""}
                   alt={post.title ?? "Cover"}
-                  height={1080}
-                  width={1920}
+                  height={500}
+                  width={500}
                   priority
-                  placeholder={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(256, 256),
-                  )}`}
+                  placeholder="empty"
                   className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
                 />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
