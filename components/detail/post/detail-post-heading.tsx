@@ -47,12 +47,10 @@ const DetailPostHeading: FC<DetailPostHeadingProps> = async ({
         <Image
           src={image}
           alt={title}
-          width={512}
-          height={288}
+          width={500}
+          height={500}
           className="h-[288px] w-full rounded-2xl bg-gray-100 object-cover"
-          placeholder={`data:image/svg+xml;base64,${toBase64(
-            shimmer(512, 288),
-          )}`}
+          placeholder="empty"
         />
         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
       </div>
