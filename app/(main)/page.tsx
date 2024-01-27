@@ -18,14 +18,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const supabase = createClient(cookieStore);
 
   // Fetch total pages
-  const { count } = await supabase
-    .from("news")
-    .select("*", { count: "exact", head: true });
+  // const { count } = await supabase
+  //   .from("news")
+  //   .select("*", { count: "exact", head: true });
 
   // console.log(count);
+  const count = 100
 
   // Pagination
-  const limit = 10;
+  const limit = 3;
   const totalPages = count ? Math.ceil(count / limit) : 0;
   const page =
     typeof searchParams.page === "string" &&
@@ -71,14 +72,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         ))}
       </div>
       {/* Pagination */}
-      {totalPages > 1 && (
+      {/* {totalPages > 1 && (
         <SharedPagination
           page={page}
           totalPages={totalPages}
           baseUrl="/"
           pageUrl="?page="
         />
-      )}
+      )} */}
     </>
   );
 }
