@@ -1,8 +1,9 @@
 module.exports = {
-    siteUrl: process.env.SITE_URL || 'https://blockmoment.com',
+    siteUrl: process.env.SITE_URL || 'https://www.blockmoment.com',
     generateRobotsTxt: true, // (optional)
     sitemapSize: 7000,
     changefreq: "daily",
+    priority: 1,
     // ...other options
     robotsTxtOptions: {
         // 정책 설정
