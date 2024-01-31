@@ -29,7 +29,7 @@ const NewsHeadline = ({ to, title }) => {
                     <h1 className="text-4xl font-bold">.</h1>
                     <p className="mt-2 text-xl">.</p>
                     <div className="flex justify-between items-center mt-4">
-                        <span className="text-sm bg-blue-700 text-white py-1 px-3 rounded-full">CATEGORY</span>
+                        <span className="text-sm bg-blue-700 text-white py-1 px-3 rounded-full">OPINION</span>
                         <span className="text-sm">01/31</span>
                     </div>
                 </div>
