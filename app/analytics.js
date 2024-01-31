@@ -25,8 +25,8 @@ export function GoogleAnalytics() {
     // console.log(process.env.NEXT_PUBLIC_GA)
     return (
         <>
-            <Script strategy="lazyOnload" async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA}`}></Script>
-            <Script strategy="lazyOnload" id="google-analytics">
+            <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA}`}></Script>
+            <Script id="google-analytics">
                 {
                     `
                     

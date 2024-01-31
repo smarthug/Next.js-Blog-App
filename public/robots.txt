@@ -4,7 +4,7 @@ Allow: /
 Disallow: /exclude
 
 # Host
-Host: https://blockmoment.com
+Host: https://www.blockmoment.com
 
 # Sitemaps
-Sitemap: https://blockmoment.com/sitemap.xml
+Sitemap: https://www.blockmoment.com/sitemap.xml

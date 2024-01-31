@@ -1,20 +1,20 @@
 import { SeoType } from "types";
 
 export const seoData: SeoType = {
-  title: "BlockMoment",
+  title: "blockmoment",
   subTitle:
-    "BlockMoment",
-  absoluteTitle: "BlockMoment",
-  ogTitle: "BlockMoment",
+    "blockmoment",
+  absoluteTitle: "blockmoment",
+  ogTitle: "blockmoment",
   author: {
-    name: "BlockMoment",
-    twitterUrl: "https://twitter.com/BlockMoment",
-    twitterAddress: "@BlockMoment",
+    name: "blockmoment",
+    twitterUrl: "https://twitter.com/blockmoment",
+    twitterAddress: "@blockmoment",
   },
   description:
-    "BlockMoment",
+    "blockmoment",
   keywords: [
-    "BlockMoment",
+    "blockmoment",
   ],
-  tags: ["Next.js", "Supabase", "TailwindCSS","BlockMoment"],
+  tags: ["Next.js", "Supabase", "TailwindCSS","blockmoment"],
 };
