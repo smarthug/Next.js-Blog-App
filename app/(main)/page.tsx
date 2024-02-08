@@ -24,28 +24,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   //   .select("*", { count: "exact", head: true });
 
   // console.log(count);
-  // const count = 100
+  const count = 100
 
   // // Pagination
-  // const limit = 10;
-  // const totalPages = count ? Math.ceil(count / limit) : 0;
-  // const page =
-  //   typeof searchParams.page === "string" &&
-  //   +searchParams.page > 1 &&
-  //   +searchParams.page <= totalPages
-  //     ? +searchParams.page
-  //     : 1;
-  // const from = (page - 1) * limit;
-  // const to = page ? from + limit : limit;
+  const limit = 10;
+  const totalPages = count ? Math.ceil(count / limit) : 0;
+  const page =
+    typeof searchParams.page === "string" &&
+    +searchParams.page > 1 &&
+    +searchParams.page <= totalPages
+      ? +searchParams.page
+      : 1;
+  const from = (page - 1) * limit;
+  const to = page ? from + limit : limit;
+
+  // console.log(from, to, page, totalPages, count)
 
   // // Fetch posts
-  // const { data, error } = await supabase
-  //   .from("news")
-  //   .select(`*`)
-  //   // .eq("published", true)
-  //   .order("created_at", { ascending: false })
-  //   .range(from, to)
-  //   .returns<PostWithCategoryWithProfile[]>();
+  const { data, error } = await supabase
+    .from("news")
+    .select(`*`)
+    // .eq("published", true)
+    .order("created_at", { ascending: false })
+    .range(from, to)
+    .returns<PostWithCategoryWithProfile[]>();
 
   // Fetch posts
   // const { data, error } = await supabase
@@ -65,13 +67,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   return (
     <>
       <div className="space-y-6">
-        {/* {data?.map((post) => (
-          <Suspense key={v4()} fallback={<MainPostItemLoading />}>
-            <MainPostItem post={post} />
-          </Suspense>
-        ))} */}
-
-        <div>Articles</div>
+        {/* <div>Articles</div> */}
         <Suspense key={v4()} fallback={<MainPostItemLoading />}>
           {/* <div className="bg-blue-800 p-4 text-white">
             <div className="text-2xl font-bold">Your Main Headline Here</div>
@@ -96,16 +92,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             />
           </div>
         </Suspense>
+        {data?.map((post) => (
+          <Suspense key={v4()} fallback={<MainPostItemLoading />}>
+            <MainPostItem post={post} />
+          </Suspense>
+        ))}
+
       </div>
       {/* Pagination */}
-      {/* {totalPages > 1 && (
+      {totalPages > 1 && (
         <SharedPagination
           page={page}
           totalPages={totalPages}
           baseUrl="/"
           pageUrl="?page="
         />
-      )} */}
+      )}
     </>
   );
 }

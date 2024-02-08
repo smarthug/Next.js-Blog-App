@@ -14,26 +14,34 @@ export async function GET(request) {
 
   // console.log(data)
 
-  // const loc = data.map((item) => {
-  //   return {
-  //     loc: `https://blockmoment.com/posts/${item.id}`,
-  //     lastmod: new Date().toISOString(),
-  //     changefreq: "daily",
-  //     priority: 0.7,
-  //   }
-  // }
-  // )
 
+  const { data, error } = await supabase
+    .from("news")
+    .select(`*`)
+    // .eq("published", true)
+    .order("created_at", { ascending: false })
+    .range(0, 10)
 
-  const loc = [
-    {
-      loc: `https://blockmoment.com/posts/${1967}`,
+  const loc = data.map((item) => {
+    return {
+      loc: `https://blockmoment.com/posts/${item.id}`,
       lastmod: new Date().toISOString(),
       changefreq: "daily",
       priority: 0.7,
     }
+  }
+  )
 
-  ]
+
+  // const loc = [
+  //   {
+  //     loc: `https://blockmoment.com/posts/${1967}`,
+  //     lastmod: new Date().toISOString(),
+  //     changefreq: "daily",
+  //     priority: 0.7,
+  //   }
+
+  // ]
 
 
   // 여기다가 , 다이나믹하게 , 블로그 id 들을 가져와서 , 뿌려주기

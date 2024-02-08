@@ -2,12 +2,11 @@ import { TailwindIndicator } from "@/components/main";
 import { seoData } from "@/config/root/seo";
 import { getUrl } from "@/lib/utils";
 import "@/styles/tailwind.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-
-import {GoogleAnalytics} from './analytics'
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -130,8 +129,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics gaId="G-DZ8D9SY132" />
       <body className={fontSans.variable}>
-        <GoogleAnalytics />
         <div className="bg-white font-sans">
           {children}
           <VercelAnalytics />

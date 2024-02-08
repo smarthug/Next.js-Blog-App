@@ -16,5 +16,5 @@ export const seoData: SeoType = {
   keywords: [
     "blockmoment",
   ],
-  tags: ["Next.js", "Supabase", "TailwindCSS","blockmoment"],
+  tags: ["blockmoment"],
 };

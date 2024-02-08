@@ -62,7 +62,7 @@ const SharedPagination: React.FC<SharedPaginationProps> = ({
         </button>
       </div>
       {/* Pagination */}
-      <div className="hidden md:-mt-px md:flex">
+      {/* <div className="hidden md:-mt-px md:flex">
         {Array(totalPages)
           .fill(1)
           .map((el, i) => (
@@ -75,7 +75,7 @@ const SharedPagination: React.FC<SharedPaginationProps> = ({
               pageUrl={pageUrl}
             />
           ))}
-      </div>
+      </div> */}
 
       <div className="-mt-px flex w-0 flex-1 justify-end">
         <button
