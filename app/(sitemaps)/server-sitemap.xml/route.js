@@ -5,8 +5,8 @@ import { cookies } from "next/headers";
 export async function GET(request) {
   // Method to source urls from cms
   // const urls = await fetch('https//example.com/api')
-  // const cookieStore = cookies();
-  // const supabase = createClient(cookieStore);
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
 
   // const { data, error } = await supabase
   //   .from("news")
