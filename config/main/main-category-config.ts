@@ -14,12 +14,12 @@ const mainCategoryConfig: CategoryType[] = [
     slug: "/",
     icon: CategoryHomeIcon,
   },
-  // {
-  //   id: "opinion",
-  //   title: "Opinion",
-  //   slug: "opinion",
-  //   icon: CategoryScienceIcon,
-  // },
+  {
+    id: "opinion",
+    title: "Opinion",
+    slug: "opinion",
+    icon: CategoryScienceIcon,
+  },
   // {
   //   id: "4db30a13-2797-4c7d-a0ce-e0c127287a39",
   //   title: "Science",
@@ -44,6 +44,25 @@ const mainCategoryConfig: CategoryType[] = [
   //   slug: "technology",
   //   icon: CategoryTechnologyIcon,
   // },
+  {
+    id: "dao",
+    title: "Dao",
+    slug: "dao",
+    icon: CategoryScienceIcon,
+  },
+  {
+    id: "technology",
+    title: "Technology",
+    slug: "technology",
+    icon: CategoryScienceIcon,
+  },
+  {
+    id: "research",
+    title: "Research",
+    slug: "research",
+    icon: CategoryScienceIcon,
+  },
+  
 ];
 
 export default mainCategoryConfig;

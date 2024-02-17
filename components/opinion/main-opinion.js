@@ -7,45 +7,33 @@ const NewsHeadline = ({ to, title }) => {
         <Link href={to}>
 
 
-            <div className="relative ">
-                {/* Background image */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src={"https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/openGraph/3.jpg"}
-                        alt="Background"
-                        layout="fill"
-                        objectFit="cover"
-                        quality={100}
-                    //   width={400}
-                    //   height={400}
-                    />
+
+
+
+
+
+            <div class="max-w-lg rounded overflow-hidden shadow-lg relative">
+                {/* <img class="w-full" src="/your-image.jpg" alt="News Image" /> */}
+
+                <Image
+                    src={"https://lirimnaqhglyehdfwelj.supabase.co/storage/v1/object/public/openGraph/3.jpg"}
+                    alt="News Image"
+                    layout="responsive"
+                    width={300}
+                    height={200}
+                />
+                <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-black text-white px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{title}</div>
                 </div>
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
-
-                {/* Content */}
-                <div className="relative z-20 p-4 max-w-2xl mx-auto text-white h-64">
-                    <h1 className="text-4xl font-bold">.</h1>
-                    <p className="mt-2 text-xl">.</p>
-                    <div className="flex justify-between items-center mt-4">
-                        <span className="text-sm bg-blue-700 text-white py-1 px-3 rounded-full">OPINION</span>
-                        <span className="text-sm">01/31</span>
+                {/* <div class="p-4">
+                    <div class="flex flex-wrap">
+                        <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">#digitalasset</span>
+                        <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">#finance</span>
+                        <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">#policy</span>
                     </div>
-                </div>
+                </div> */}
             </div>
 
-
-            <div>
-                <div className="relative z-20 p-4 max-w-2xl mx-auto text-black">
-                    <h1 className="text-3xl font-bold">{title}</h1>
-                    {/* <p className="mt-2 text-xl">Subheadline or description goes here</p>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-sm bg-blue-700 text-white py-1 px-3 rounded-full">CATEGORY</span>
-          <span className="text-sm">01/31</span>
-        </div> */}
-                </div>
-            </div>
         </Link>
 
 
@@ -54,3 +42,8 @@ const NewsHeadline = ({ to, title }) => {
 };
 
 export default NewsHeadline;
+
+
+
+
+
