@@ -24,7 +24,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   //   .select("*", { count: "exact", head: true });
 
   // console.log(count);
-  const count = 100
+  const count = 100;
 
   // // Pagination
   const limit = 10;
@@ -69,27 +69,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <div className="space-y-6">
         {/* <div>Articles</div> */}
         <Suspense key={v4()} fallback={<MainPostItemLoading />}>
-          {/* <div className="bg-blue-800 p-4 text-white">
-            <div className="text-2xl font-bold">Your Main Headline Here</div>
-            <div className="text-md mt-2">Subheadline or description goes here</div>
-            <div className="mt-4 flex items-center justify-between">
-              <span className="rounded bg-blue-700 p-1 text-xs text-white">
-                CATEGORY
-              </span>
-              <span className="text-xs">01/31</span>
-            </div>
-          </div> */}
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-            <Opinion
-              to={"/opinion/goodgang"}
-              title={"클레이튼-핀시아 개정안, `반전`인가 `배신`인가"}
-            />
+          
+          <div className="container mx-auto px-4  ">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center">
+              <Opinion
+                to={"/opinion/goodgang"}
+                title={"클레이튼-핀시아 개정안, `반전`인가 `배신`인가"}
+              />
+            
+           
             <Opinion
               to={"/opinion/dragon"}
               title={"핀시아와 클레이튼 1:1? `2배를 줘도 안합니다.`"}
             />
+            </div>
           </div>
         </Suspense>
         {data?.map((post) => (
@@ -97,7 +90,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <MainPostItem post={post} />
           </Suspense>
         ))}
-
       </div>
       {/* Pagination */}
       {totalPages > 1 && (
