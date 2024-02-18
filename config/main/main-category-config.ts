@@ -28,7 +28,7 @@ const mainCategoryConfig: CategoryType[] = [
   },
   {
     id: "tech",
-    title: "tech",
+    title: "Tech",
     slug: "tech",
     icon: CategoryScienceIcon,
   },

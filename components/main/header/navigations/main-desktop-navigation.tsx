@@ -1,9 +1,9 @@
 import { LoginMenu } from "@/components/login";
 import { IconWrapperRounded, LogoIcon } from "@/icons";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MainDesktopNavigationMenu } from "./menu";
-import Image from "next/image";
 
 const MainDesktopNavigation = () => {
   return (
@@ -16,18 +16,13 @@ const MainDesktopNavigation = () => {
               <LogoIcon className="h-10 w-10" />
             </IconWrapperRounded>
           </Link>
-          <div className="flex mx-3  items-center justify-center">
+          <div className="mx-3 flex  items-center justify-center">
             {/* <img
               src="your-image-url.jpg"
               alt="Description"
               className="max-h-full max-w-full"
             /> */}
-            <Image
-              src="/images/typo.png"
-              alt="Typo"
-              width={100}
-              height={1}
-            />
+            <Image src="/images/typo.png" alt="Typo" width={100} height={1} />
           </div>
         </div>
 
@@ -39,7 +34,9 @@ const MainDesktopNavigation = () => {
         </div>
 
         {/* Login Menu */}
-        <div className="flex flex-1 justify-end">{/* <LoginMenu /> */}</div>
+        <div className="flex flex-1 justify-end">
+          <LoginMenu />
+        </div>
       </nav>
     </>
   );
