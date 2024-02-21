@@ -2,6 +2,7 @@ export { default as BookMarkOutlineIcon } from "./bookmark-outline-icon";
 export { default as BookMarkSolidIcon } from "./bookmark-solid-icon";
 export { default as GithubIcon } from "./github-icon";
 export { default as GoogleIcon } from "./google-icon";
+export { default as KakaoIcon } from "./kakao-icon";
 export { default as IconWrapperRounded } from "./icon-wrapper-rounded";
 export { default as LogoIcon } from "./logo-icon";
 export { default as LoadingDots } from "./loading-dots";

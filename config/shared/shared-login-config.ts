@@ -7,7 +7,7 @@ const sharedLoginConfig = {
   // Social login form
   google: "Sign in with Google",
   facebook: "Sign in with Facebook",
-  github: "Sign in with Github",
+  github: "Sign in with Kakao",
 
   // Email login form
   email: "Sign in with magic link",

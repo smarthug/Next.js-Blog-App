@@ -1,7 +1,7 @@
 "use client";
 
 import { sharedLoginConfig } from "@/config/shared";
-import { GithubIcon, GoogleIcon, LoadingDots } from "@/icons";
+import { GithubIcon, GoogleIcon, KakaoIcon, LoadingDots } from "@/icons";
 import { getUrl } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -62,7 +62,7 @@ const LoginSection: React.FC<LoginSectionProps> = ({ setOpen }) => {
   async function signInWithGitHub() {
     setSignInGithubClicked(true);
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "github",
+      provider: "kakao",
       options: {
         redirectTo,
         queryParams: {
@@ -113,7 +113,7 @@ const LoginSection: React.FC<LoginSectionProps> = ({ setOpen }) => {
             )}
           </button>
 
-          <button
+          {/* <button
             disabled={signInGithubClicked}
             className={`${
               signInGithubClicked
@@ -127,6 +127,25 @@ const LoginSection: React.FC<LoginSectionProps> = ({ setOpen }) => {
             ) : (
               <>
                 <GithubIcon className="h-5 w-5" />
+                <p>{sharedLoginConfig.github}</p>
+              </>
+            )}
+          </button> */}
+
+          <button
+            disabled={signInGithubClicked}
+            className={`${
+              signInGithubClicked
+                ? "cursor-not-allowed border-gray-200 bg-gray-100"
+                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            onClick={() => signInWithGitHub()}
+          >
+            {signInGithubClicked ? (
+              <LoadingDots color="#808080" />
+            ) : (
+              <>
+                <KakaoIcon className="h-5 w-5" />
                 <p>{sharedLoginConfig.github}</p>
               </>
             )}

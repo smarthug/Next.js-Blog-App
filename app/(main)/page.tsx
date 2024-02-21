@@ -18,6 +18,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  console.log(user);
+
   // Fetch total pages
   // const { count } = await supabase
   //   .from("news")
