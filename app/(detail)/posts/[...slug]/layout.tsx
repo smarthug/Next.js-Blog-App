@@ -15,10 +15,12 @@ async function getPost(params: { slug: string[] }) {
   }
 
   const response = await supabase
-    .from("news")
-    .select(`*`)
-    .match({ id: slug })
+    .from("posts")
+    .select(`*, categories(*), profiles(*)`)
+    .match({ slug: slug, published: true })
     .single<PostWithCategoryWithProfile>();
+
+    console.log(response.data)
 
   if (!response.data) {
     notFound;

@@ -5,6 +5,7 @@ import {
   DetailPostHeading,
 } from "@/components/detail/post";
 import { DetailPostScrollUpButton } from "@/components/detail/post/buttons";
+
 import { seoData } from "@/config/root/seo";
 import { getOgImageUrl, getUrl } from "@/lib/utils";
 import {
@@ -13,12 +14,15 @@ import {
 } from "@/types/collection";
 import type { Database } from "@/types/supabase";
 import { createClient } from "@/utils/supabase/server";
+
 import { format, parseISO } from "date-fns";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+import { useMemo } from "react";
 import readingTime, { ReadTimeResults } from "reading-time";
 
+import Content from "@/components/detail/post/detail-post-content"
 export const revalidate = 0;
 
 interface PostPageProps {
@@ -41,23 +45,18 @@ async function getBookmark(postId: string, userId: string) {
 
 async function getPost(params: { slug: string[] }) {
   const slug = params?.slug?.join("/");
+  console.log(slug);
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  // const response = await supabase
-  //   .from("posts")
-  //   .select(`*, categories(*), profiles(*)`)
-  //   .match({ slug: slug, published: false })
-  //   .single<PostWithCategoryWithProfile>();
-
   const response = await supabase
-    .from("news")
-    .select(`*`)
-    .match({ id: slug })
+    .from("posts")
+    .select(`*, categories(*), profiles(*)`)
+    .match({ slug: slug, published: true })
     .single<PostWithCategoryWithProfile>();
 
   if (!response.data) {
-    // notFound;
+    notFound;
   }
 
   return response.data;
@@ -77,14 +76,14 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.tldr,
+    description: post.description,
     authors: {
       name: seoData.author.name,
       url: seoData.author.twitterUrl,
     },
     openGraph: {
       title: post.title as string,
-      description: post.tldr as string,
+      description: post.description as string,
       type: "article",
       url: getUrl() + slug,
       images: [
@@ -104,7 +103,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: post.title as string,
-      description: post.tldr as string,
+      description: post.description as string,
       images: [
         getOgImageUrl(
           post.title as string,
@@ -133,15 +132,15 @@ async function getComments(postId: string) {
   return comments;
 }
 
+
+
 export default async function PostPage({ params }: PostPageProps) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   // Get post data
   const post = await getPost(params);
-  // console.log("post");
-  // console.log(post);
   if (!post) {
-    // notFound();
+    notFound();
   }
   // Set post views
   const slug = params?.slug?.join("/");
@@ -149,26 +148,26 @@ export default async function PostPage({ params }: PostPageProps) {
   // Check user logged in or not
   let username = null;
   let profileImage = null;
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  // if (session) {
-  //   username = session.user?.user_metadata.full_name;
-  //   profileImage =
-  //     session?.user?.user_metadata.picture ||
-  //     session?.user?.user_metadata.avatar_url;
-  // }
+  if (session) {
+    username = session.user?.user_metadata.full_name;
+    profileImage =
+      session?.user?.user_metadata.picture ||
+      session?.user?.user_metadata.avatar_url;
+  }
 
-  // // Get bookmark status
-  // const isBookmarked = await getBookmark(
-  //   post.id as string,
-  //   session?.user.id as string,
-  // );
+  // Get bookmark status
+  const isBookmarked = await getBookmark(
+    post.id as string,
+    session?.user.id as string,
+  );
 
   // Get comments
-  // const comments = await getComments(post.id as string);
-  // const readTime = readingTime(post.content ? post.content : "");
+  const comments = await getComments(post.id as string);
+  const readTime = readingTime(post.content ? post.content : "");
 
   return (
     <>
@@ -179,34 +178,18 @@ export default async function PostPage({ params }: PostPageProps) {
               <div className="relative mx-auto max-w-4xl py-2">
                 {/* Heading */}
                 <DetailPostHeading
-                  id={post?.id ?? ''}
-                  title={post?.title as string}
-                  image={post?.image as string}
-                  // authorName={post.profiles.full_name as string}
-                  // authorImage={post.profiles.avatar_url as string}
-                  date={format(parseISO(post?.created_at!), "MMMM dd, yyyy")}
-                  // category={post.categories?.title as string}
-                  // readTime={readTime as ReadTimeResults}
+                  id={post.id}
+                  title={post.title as string}
+                  image={post.image as string}
+                  authorName={post.profiles.full_name as string}
+                  authorImage={post.profiles.avatar_url as string}
+                  date={format(parseISO(post.updated_at!), "MMMM dd, yyyy")}
+                  category={post.categories?.title as string}
+                  readTime={readTime as ReadTimeResults}
                 />
                 {/* Top Floatingbar */}
                 <div className="mx-auto">
-                  <div></div>
-                  <div className="rounded-lg border border-gray-300 bg-gray-100 p-4">
-                    <h2 className="text-lg font-semibold text-gray-800">
-                      TLDR
-                    </h2>
-                    <ul className="mt-2 list-disc space-y-2 pl-5">
-                      <li className="text-gray-700">{post?.tldr}</li>
-                      {/* <li className="text-gray-700">
-                        Key point 2 of the article.
-                      </li>
-                      <li className="text-gray-700">
-                        Key point 3 of the article, etc.
-                      </li> */}
-                    </ul>
-                  </div>
-
-                  {/* <DetailPostFloatingBar
+                  <DetailPostFloatingBar
                     id={post.id as string}
                     title={post.title as string}
                     text={post.description as string}
@@ -215,19 +198,20 @@ export default async function PostPage({ params }: PostPageProps) {
                     )}`}
                     totalComments={comments?.length}
                     isBookmarked={isBookmarked}
-                  /> */}
+                  />
                 </div>
               </div>
               {/* Content */}
               <div className="relative mx-auto max-w-3xl border-slate-500/50 py-5">
-                <div
+                {/* <div
                   className="lg:prose-md prose"
-                  dangerouslySetInnerHTML={{ __html: post?.description || "" }}
-                />
+                  dangerouslySetInnerHTML={{ __html: post.content || "" }}
+                /> */}
+                <Content json={post.content} />
               </div>
               <div className="mx-auto mt-10">
                 {/* Bottom Floatingbar */}
-                {/* <DetailPostFloatingBar
+                <DetailPostFloatingBar
                   id={post.id as string}
                   title={post.title as string}
                   text={post.description as string}
@@ -236,14 +220,14 @@ export default async function PostPage({ params }: PostPageProps) {
                   )}`}
                   totalComments={comments?.length}
                   isBookmarked={isBookmarked}
-                /> */}
+                />
               </div>
             </div>
           </div>
-          {/* <DetailPostComment
+          <DetailPostComment
             postId={post.id as string}
             comments={comments as CommentWithProfile[]}
-          /> */}
+          />
         </div>
         <DetailPostScrollUpButton />
       </div>
