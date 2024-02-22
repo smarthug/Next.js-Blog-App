@@ -20,7 +20,7 @@ async function getPost(params: { slug: string[] }) {
     .match({ slug: slug, published: true })
     .single<PostWithCategoryWithProfile>();
 
-    console.log(response.data)
+  // console.log(response.data)
 
   if (!response.data) {
     notFound;

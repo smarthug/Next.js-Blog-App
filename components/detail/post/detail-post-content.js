@@ -5,7 +5,7 @@ import { generateHTML } from "@tiptap/core";
 import { useMemo } from "react";
 
 const Content = ({ json }) => {
-    console.log(json)
+    // console.log(json)
     // const json = {
     //   type: "doc",
     //   content: [

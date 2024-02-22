@@ -80,6 +80,8 @@ const Editor: FC<EditorProps> = ({
   galleryImageFileNames,
   galleryImagePublicUrls,
 }) => {
+  // console.log("test")
+  // console.log(userId)
   const router = useRouter();
 
   // These are the values that will be used to upload the image
@@ -104,7 +106,8 @@ const Editor: FC<EditorProps> = ({
   const bucketNameGalleryImage =
     process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_GALLERY_IMAGE ||
     "gallery-image";
-  const token = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const token = process.env.NEXT_PUBLIC_SUPABASE_BEARER_TOKEN;
+  const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const projectId = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_ID;
   const supabaseUploadURL = `https://${projectId}.supabase.co/storage/v1/upload/resumable`;
 
@@ -113,7 +116,7 @@ const Editor: FC<EditorProps> = ({
   var uppyCover = new Uppy({
     id: "cover-image",
     autoProceed: false,
-    debug: false,
+    debug: true,
     allowMultipleUploadBatches: true,
     restrictions: {
       maxFileSize: 6000000,
@@ -123,6 +126,7 @@ const Editor: FC<EditorProps> = ({
     endpoint: supabaseUploadURL,
     headers: {
       authorization: `Bearer ${token}`,
+      apikey: SUPABASE_ANON_KEY ?? "",
     },
     chunkSize: 6 * 1024 * 1024,
     allowedMetaFields: [
@@ -134,6 +138,7 @@ const Editor: FC<EditorProps> = ({
   });
 
   uppyCover.on("file-added", (file) => {
+    console.log( `${userId}/${post.id}/${file.name}`)
     file.meta = {
       ...file.meta,
       bucketName: bucketNameCoverImage,
@@ -166,6 +171,7 @@ const Editor: FC<EditorProps> = ({
     endpoint: supabaseUploadURL,
     headers: {
       authorization: `Bearer ${token}`,
+      apikey: SUPABASE_ANON_KEY,
     },
     chunkSize: 6 * 1024 * 1024,
     allowedMetaFields: [
@@ -177,6 +183,7 @@ const Editor: FC<EditorProps> = ({
   });
 
   uppyGallery.on("file-added", (file) => {
+    console.log( `${userId}/${post.id}/${file.name}`)
     file.meta = {
       ...file.meta,
       bucketName: bucketNameGalleryImage,
