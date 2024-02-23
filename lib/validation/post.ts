@@ -64,3 +64,9 @@ export const postUpdateSchema = z.object({
   description: z.string().optional(),
   content: z.any().optional(),
 });
+
+export const postPublishSchema = z.object({
+  id: z.string(),
+  published: z.any().optional(),
+  status: z.string().optional(),
+});

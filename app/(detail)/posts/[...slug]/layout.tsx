@@ -15,7 +15,7 @@ async function getPost(params: { slug: string[] }) {
   }
 
   const response = await supabase
-    .from("posts")
+    .from("drafts")
     .select(`*, categories(*), profiles(*)`)
     .match({ slug: slug, published: true })
     .single<PostWithCategoryWithProfile>();
