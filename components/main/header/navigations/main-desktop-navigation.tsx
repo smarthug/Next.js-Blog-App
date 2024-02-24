@@ -1,13 +1,29 @@
+'use client';
 import { LoginMenu } from "@/components/login";
 import { IconWrapperRounded, LogoIcon } from "@/icons";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAccount } from 'wagmi'; // Hook을 컴포넌트에서 사용
+import { daoUtil } from "@/utils/web3/daoUtil";
 import { MainDesktopNavigationMenu } from "./menu";
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const MainDesktopNavigation = () => {
+  const [nftNum, setNftNum] = useState<number>(0);
+  const { address } = useAccount();
+  
+
+  useEffect(() => {
+    const fetchNFTNum = async () => {
+      const num = await daoUtil(address);
+      console.log(num);
+      setNftNum(num);
+    };
+
+    fetchNFTNum();
+  });
   return (
     <>
       <nav className="mx-auto hidden max-w-8xl items-center justify-between px-2 py-4 md:flex">
@@ -34,6 +50,7 @@ const MainDesktopNavigation = () => {
             <MainDesktopNavigationMenu />
           </div>
         </div>
+          <span>{nftNum}</span>
 
         {/* Login Menu */}
         <div className="flex flex-1 justify-end gap-2">

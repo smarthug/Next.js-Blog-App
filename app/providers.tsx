@@ -12,6 +12,8 @@ import {
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
+  klaytnBaobab,
+  klaytn,
   arbitrum,
   base,
   mainnet,
@@ -36,12 +38,8 @@ const config = getDefaultConfig({
     },
   ],
   chains: [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    zora,
+    klaytnBaobab,
+    klaytn,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
