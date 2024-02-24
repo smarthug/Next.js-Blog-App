@@ -1,4 +1,5 @@
 import { MainPostItem, MainPostItemLoading } from "@/components/main";
+import Test from "@/components/main/test.tsx";
 import Opinion from "@/components/opinion/main-opinion";
 import { SharedPagination } from "@/components/shared";
 import { PostWithCategoryWithProfile } from "@/types/collection";
@@ -75,7 +76,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <div className="space-y-6">
         {/* <div>Articles</div> */}
         <Suspense key={v4()} fallback={<MainPostItemLoading />}>
-          
+          <Test />
           <div className="container mx-auto px-4  ">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center">
               <Opinion
