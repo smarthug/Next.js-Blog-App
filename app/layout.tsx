@@ -7,6 +7,8 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import "@rainbow-me/rainbowkit/styles.css";
+import { Providers } from "./providers";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -131,12 +133,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <GoogleAnalytics gaId="G-DZ8D9SY132" />
       <body className={fontSans.variable}>
-        <div className="bg-white font-sans">
-          {children}
-          <VercelAnalytics />
-          <Toaster position="top-center" />
-          <TailwindIndicator />
-        </div>
+        <Providers>
+          <div className="bg-white font-sans">
+            {children}
+            <VercelAnalytics />
+            <Toaster position="top-center" />
+            <TailwindIndicator />
+          </div>
+        </Providers>
       </body>
     </html>
   );

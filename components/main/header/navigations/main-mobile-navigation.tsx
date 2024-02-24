@@ -5,6 +5,8 @@ import { Disclosure } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { MainMobileMenuButton, MainMobileNavigationMenu } from "./menu";
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 const MainMobileNavigation = () => {
   return (
     <Disclosure>
@@ -12,8 +14,9 @@ const MainMobileNavigation = () => {
         <>
           <nav className="mx-auto flex max-w-5xl items-center justify-between bg-gray-50 px-6 py-4 md:hidden">
             {/* Login */}
-            <div className="flex flex-1 justify-start pl-2">
+            <div className="flex flex-1 justify-start pl-2 gap-3">
               <LoginMenu />
+              <ConnectButton />
             </div>
 
             {/* Mobile Menu Button */}
