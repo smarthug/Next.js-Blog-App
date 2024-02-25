@@ -50,7 +50,6 @@ const MainDesktopNavigation = () => {
             <MainDesktopNavigationMenu />
           </div>
         </div>
-          <span>{nftNum}</span>
 
         {/* Login Menu */}
         <div className="flex flex-1 justify-end gap-2">

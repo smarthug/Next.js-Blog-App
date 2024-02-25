@@ -53,6 +53,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "blockmoment.com"
+      },
+      {
+        protocol: "http",
+        hostname: "k.kakaocdn.net"
       }
     ],
   },
