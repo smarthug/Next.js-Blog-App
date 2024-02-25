@@ -47,7 +47,7 @@ const MainDesktopNavigation = () => {
         {/* Navigation */}
         <div>
           <div className="flex flex-1 gap-x-6">
-            <MainDesktopNavigationMenu />
+            <MainDesktopNavigationMenu daoMember={nftNum} />
           </div>
         </div>
 
