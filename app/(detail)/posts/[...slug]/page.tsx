@@ -3,6 +3,7 @@ import {
   DetailPostComment,
   DetailPostFloatingBar,
   DetailPostHeading,
+  DetailPostVote,
 } from "@/components/detail/post";
 import { DetailPostScrollUpButton } from "@/components/detail/post/buttons";
 import { seoData } from "@/config/root/seo";
@@ -141,7 +142,7 @@ export default async function PostPage({ params }: PostPageProps) {
   // console.log("post");
   // console.log(post);
   if (!post) {
-    // notFound();
+    notFound();
   }
   // Set post views
   const slug = params?.slug?.join("/");
@@ -244,6 +245,9 @@ export default async function PostPage({ params }: PostPageProps) {
             postId={post.id as string}
             comments={comments as CommentWithProfile[]}
           /> */}
+
+
+          <DetailPostVote point={post?.point} />
         </div>
         <DetailPostScrollUpButton />
       </div>

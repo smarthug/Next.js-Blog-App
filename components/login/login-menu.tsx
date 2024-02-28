@@ -14,6 +14,7 @@ const LoginMenu = () => {
   const supabase = createClient();
   const [session, setSession] = useState<Session | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string>("");
+  const [point, setPoint] = useState<number>(0);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -38,6 +39,7 @@ const LoginMenu = () => {
         .single<Profile>();
       if (data) {
         setAvatarUrl(data.avatar_url ? data.avatar_url : "");
+        setPoint(data.point ? data.point : 0);
       }
     }
     fetchAvatar();
@@ -46,7 +48,7 @@ const LoginMenu = () => {
   return (
     <>
       {session ? (
-        <LoginProfileButton profileImageUrl={avatarUrl} />
+        <LoginProfileButton profileImageUrl={avatarUrl} point={point} />
       ) : (
         <LoginButton />
       )}

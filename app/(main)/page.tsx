@@ -50,7 +50,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const { data, error } = await supabase
     .from("news")
     .select(`*`)
-    // .eq("published", true)
+    .match({  published: false })
     .order("created_at", { ascending: false })
     .range(from, to)
     .returns<PostWithCategoryWithProfile[]>();

@@ -13,10 +13,15 @@ const MainDesktopNavigationMenu = (props) => {
       <div className="hidden gap-x-6 md:flex">
         {mainCategoryConfig.map((category) => (
           <Link
+            // href={
+            //   category.slug === "/"
+            //     ? category.slug
+            //     : `/category/${category.slug}`
+            // }
             href={
-              category.slug === "/"
-                ? category.slug
-                : `/category/${category.slug}`
+              
+                category.slug
+                
             }
             key={v4()}
             className={cn(

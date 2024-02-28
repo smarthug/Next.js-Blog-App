@@ -25,6 +25,7 @@ interface LoginProfileButtonProps {
 
 const LoginProfileButton: FC<LoginProfileButtonProps> = ({
   profileImageUrl,
+  point,
 }) => {
   const supabase = createClient();
   const router = useRouter();
@@ -100,6 +101,8 @@ const LoginProfileButton: FC<LoginProfileButtonProps> = ({
           </button>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <span className="font-bold">{point} points</span>
     </div>
   );
 };
