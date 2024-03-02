@@ -21,6 +21,7 @@ import { FC } from "react";
 
 interface LoginProfileButtonProps {
   profileImageUrl?: string;
+  point: number;
 }
 
 const LoginProfileButton: FC<LoginProfileButtonProps> = ({

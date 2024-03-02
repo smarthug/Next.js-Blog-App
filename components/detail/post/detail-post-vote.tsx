@@ -6,7 +6,12 @@ import { useRouter } from "next/navigation";
 import { voteUpdateConfig } from "@/config/vote";
 import { UpdateVote } from "@/actions/vote/update-vote";
 
-const DetailPostVote: React.FC = ({ id,point = 0 }) => {
+interface DetailPostVoteProps {
+  id: string;
+  point: number;
+}
+
+const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id,point = 0 } ) => {
   const [upvotes, setUpvotes] = useState<number>(0);
   const [downvotes, setDownvotes] = useState<number>(0);
 

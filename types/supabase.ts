@@ -265,6 +265,7 @@ export interface Database {
       }
       profiles: {
         Row: {
+          point: any
           avatar_url: string | null
           full_name: string | null
           id: string
