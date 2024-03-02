@@ -247,7 +247,7 @@ export default async function PostPage({ params }: PostPageProps) {
           /> */}
 
 
-          <DetailPostVote point={post?.point} />
+          <DetailPostVote id={slug} point={post?.point} />
         </div>
         <DetailPostScrollUpButton />
       </div>

@@ -1,0 +1,1 @@
+export { default as voteUpdateConfig } from "./vote-update-config";
