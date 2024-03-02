@@ -21,10 +21,12 @@ import { FC } from "react";
 
 interface LoginProfileButtonProps {
   profileImageUrl?: string;
+  point: number;
 }
 
 const LoginProfileButton: FC<LoginProfileButtonProps> = ({
   profileImageUrl,
+  point,
 }) => {
   const supabase = createClient();
   const router = useRouter();
@@ -100,6 +102,11 @@ const LoginProfileButton: FC<LoginProfileButtonProps> = ({
           </button>
         </DropdownMenuContent>
       </DropdownMenu>
+      <div className="flex items-center justify-center">
+        <span className="ml-2 hidden font-semibold text-gray-800 sm:block">
+          {point} pts
+        </span>
+      </div>
     </div>
   );
 };

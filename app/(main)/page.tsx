@@ -22,7 +22,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user);
+  // console.log(user);
 
   // Fetch total pages
   // const { count } = await supabase
@@ -50,7 +50,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const { data, error } = await supabase
     .from("news")
     .select(`*`)
-    // .eq("published", true)
+    .match({  published: true })
     .order("created_at", { ascending: false })
     .range(from, to)
     .returns<PostWithCategoryWithProfile[]>();

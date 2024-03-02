@@ -6,17 +6,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { v4 } from "uuid";
 
-const MainDesktopNavigationMenu = () => {
+const MainDesktopNavigationMenu = (props) => {
   const currentPath = usePathname();
   return (
     <>
       <div className="hidden gap-x-6 md:flex">
         {mainCategoryConfig.map((category) => (
           <Link
+            // href={
+            //   category.slug === "/"
+            //     ? category.slug
+            //     : `/category/${category.slug}`
+            // }
             href={
-              category.slug === "/"
-                ? category.slug
-                : `/category/${category.slug}`
+              
+                category.slug
+                
             }
             key={v4()}
             className={cn(
@@ -37,7 +42,14 @@ const MainDesktopNavigationMenu = () => {
               },
             )}
           >
-            <div className="relative">{category.title}</div>
+            {category.title === "Dao" ?
+              props.daoMember > 0 ?
+                <div className="relative">{category.title}</div>
+                :
+                <></>
+              :
+              <div className="relative">{category.title}</div>
+            }
           </Link>
         ))}
       </div>
