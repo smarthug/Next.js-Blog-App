@@ -101,8 +101,11 @@ const LoginProfileButton: FC<LoginProfileButtonProps> = ({
           </button>
         </DropdownMenuContent>
       </DropdownMenu>
-
-      <span className="font-bold">{point} points</span>
+      <div className="flex items-center justify-center">
+        <span className="ml-2 hidden font-semibold text-gray-800 sm:block">
+          {point} pts
+        </span>
+      </div>
     </div>
   );
 };

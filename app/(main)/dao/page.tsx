@@ -70,7 +70,7 @@ export default async function CategoryPage({
     const { data, error } = await supabase
     .from("news")
     .select(`*`)
-    .match({  published: true })
+    .match({  published: false })
     .order("created_at", { ascending: false })
     .range(from, to)
     .returns<PostWithCategoryWithProfile[]>();
