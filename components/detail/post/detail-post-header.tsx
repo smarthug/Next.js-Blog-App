@@ -3,6 +3,7 @@
 import { LoginMenu } from "@/components/login";
 import { SharedBackButton } from "@/components/shared";
 import { useReadingProgress } from "@/hooks/use-reading-progress";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 interface DetailPostHeaderProps {
   title: string;
@@ -13,7 +14,7 @@ const DetailPostHeader: React.FC<DetailPostHeaderProps> = ({ title }) => {
   return (
     <header className="border-y-1 sticky top-0 z-40 border-black/5 bg-gray-50/60 shadow-sm shadow-gray-300 backdrop-blur-lg">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+        className="mx-auto flex max-w-8xl items-center justify-between px-6 py-4"
         aria-label="Global"
       >
         <div className="flex flex-none items-center justify-start">
@@ -24,8 +25,10 @@ const DetailPostHeader: React.FC<DetailPostHeaderProps> = ({ title }) => {
             {title}
           </h1>
         </div>
-        <div className="flex flex-none items-center justify-end">
+        <div className="flex flex-none items-center justify-end gap-2">
           <LoginMenu />
+
+          <ConnectButton />
         </div>
       </nav>
       <span

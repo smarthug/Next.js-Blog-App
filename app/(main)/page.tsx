@@ -93,7 +93,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         </Suspense>
         {data?.map((post) => (
           <Suspense key={v4()} fallback={<MainPostItemLoading />}>
-            <MainPostItem post={post} />
+            <MainPostItem post={post} dao={false} />
           </Suspense>
         ))}
       </div>

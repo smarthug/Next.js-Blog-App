@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { v4 } from "uuid";
 
-const MainDesktopNavigationMenu = (props) => {
+const MainDesktopNavigationMenu = ({daoMember}) => {
   const currentPath = usePathname();
   return (
     <>
@@ -43,7 +43,7 @@ const MainDesktopNavigationMenu = (props) => {
             )}
           >
             {category.title === "Dao" ?
-              props.daoMember > 0 ?
+              daoMember > 0 ?
                 <div className="relative">{category.title}</div>
                 :
                 <></>
@@ -52,6 +52,11 @@ const MainDesktopNavigationMenu = (props) => {
             }
           </Link>
         ))}
+
+
+
+
+        
       </div>
     </>
   );

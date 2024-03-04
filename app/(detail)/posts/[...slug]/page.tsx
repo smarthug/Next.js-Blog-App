@@ -180,7 +180,7 @@ export default async function PostPage({ params }: PostPageProps) {
               <div className="relative mx-auto max-w-4xl py-2">
                 {/* Heading */}
                 <DetailPostHeading
-                  id={post?.id ?? ''}
+                  id={post?.id ?? ""}
                   title={post?.title as string}
                   image={post?.image as string}
                   // authorName={post.profiles.full_name as string}
@@ -246,8 +246,7 @@ export default async function PostPage({ params }: PostPageProps) {
             comments={comments as CommentWithProfile[]}
           /> */}
 
-
-            <DetailPostVote id={slug} point={post?.point} />
+          <DetailPostVote id={slug} point={post?.point} />
         </div>
         <DetailPostScrollUpButton />
       </div>
