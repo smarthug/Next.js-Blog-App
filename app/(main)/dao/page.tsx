@@ -6,6 +6,7 @@ import { getOgImageUrl, getUrl } from "@/lib/utils";
 import { PostWithCategoryWithProfile } from "@/types/collection";
 import type { Database } from "@/types/supabase";
 import { createClient } from "@/utils/supabase/server";
+import { truncateSync } from "fs";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import notFound from "next/navigation";
@@ -86,7 +87,7 @@ export default async function CategoryPage({
         {data?.length === 0 ? (
           <SharedEmpty />
         ) : (
-          data?.map((post) => <MainPostItem key={v4()} post={post} />)
+          data?.map((post) => <MainPostItem key={v4()} post={post} dao={true} />)
         )}
       </div>
       {/* Pagination */}

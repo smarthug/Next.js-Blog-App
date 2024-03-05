@@ -1,17 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { voteUpdateConfig } from "@/config/vote";
 import { UpdateVote } from "@/actions/vote/update-vote";
+import { voteUpdateConfig } from "@/config/vote";
+import { daoUtil } from "@/utils/web3/daoUtil";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { useAccount } from "wagmi";
+
+import { createClient } from "@/utils/supabase/client";
+import { Session } from "@supabase/supabase-js";
+import { UpdateUserPoint } from "@/actions/vote/update-user-point";
+import { DivideCircle } from "lucide-react";
 
 interface DetailPostVoteProps {
   id: string;
   point: number;
 }
 
-const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id,point = 0 } ) => {
+const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
+  const supabase = createClient();
   const [upvotes, setUpvotes] = useState<number>(0);
   const [downvotes, setDownvotes] = useState<number>(0);
 
@@ -19,6 +27,36 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id,point = 0 } ) => {
 
   const router = useRouter();
 
+  const [nftNum, setNftNum] = useState<number>(0);
+  const { address } = useAccount();
+
+
+  const [session, setSession] = useState<Session | null>(null);
+
+  // Check authentitication and bookmark states
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [session?.user.id, supabase.auth]);
+
+  useEffect(() => {
+    const fetchNFTNum = async () => {
+      const num = await daoUtil(address);
+      console.log(num);
+      setNftNum(num);
+    };
+
+    fetchNFTNum();
+  });
 
   // Set post views
   // const slug = params?.slug?.join("/");
@@ -43,17 +81,15 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id,point = 0 } ) => {
   const handleUpvote = () => setVoteNum(voteNum + 1);
   // const handleDownvote = () => setVoteNum(voteNum - 1);
 
-
   const handleDownvote = () => {
     if (voteNum > 0) {
       setVoteNum(voteNum - 1);
-    } 
-  }
+    }
+  };
 
   // const handleVote = () => {
   //   // 투표하기
   // };
-
 
   async function handleVote() {
     // setShowLoadingAlert(true);
@@ -76,64 +112,103 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id,point = 0 } ) => {
     //   toast.error(protectedEditorConfig.errorMessage);
     // }
 
+    if (session?.user.id) {
+
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .match({ id: session?.user.id })
+        .single();
+      // const post = {
+      //   title: protectedPostConfig.untitled,
+      //   user_id: session?.user.id,
+      // };
+
+      // const response = await CreatePost(post);
+
     console.log(id, voteNum);
     const response = await UpdateVote(id, point + voteNum);
 
+    const response2 = await UpdateUserPoint(session?.user.id, data.point - voteNum);
+
     if (response) {
       toast.success(voteUpdateConfig.successMessage);
+
+      setVoteNum(0);
+
+      router.refresh();
+      // window.reload()
       // router.push(`/editor/posts?search=refresh`);
       // router.reload();
     } else {
       toast.error(voteUpdateConfig.errorMessage);
     }
 
+  }
+
     // setIsSaving(false);
     // setShowLoadingAlert(false);
   }
 
-
   const handleChange = (event) => {
     if (event.target.value < 0) {
       setVoteNum(0);
-      
-    }else{
-
+    } else {
       setVoteNum(Number(event.target.value));
     }
   };
 
   return (
     <>
-      <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
-       
-        <button
-          className="flex w-12  items-center justify-center rounded  px-4 py-2 text-2xl border border-black/5 bg-white py-2 hover:bg-gray-50 hover:shadow-sm"
-          onClick={handleDownvote}
-        >
-          -
-        </button>
-        {/* <span className="text-2xl font-bold">{point}</span> */}
-        <input type="number" min={0} onChange={handleChange} className="form-input text-2xl font-bold block w-24 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" value={voteNum} />
+      {nftNum > 0 && (
+        <>
+        <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
+            <div
+              className="flex w-24 items-center justify-center  border border-black/5 py-2 text-2xl font-bold hover:bg-gray-50 hover:shadow-sm"
+              
+            >
+              {point}
+            </div>
+          </div>
+          <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
+            <button
+              className="flex w-12  items-center justify-center rounded  border border-black/5 bg-white px-4 py-2 py-2 text-2xl hover:bg-gray-50 hover:shadow-sm"
+              onClick={handleDownvote}
+            >
+              -
+            </button>
+            {/* <span className="text-2xl font-bold">{point}</span> */}
+            <input
+              type="number"
+              min={0}
+              onChange={handleChange}
+              className="form-input block w-24 rounded-md border-gray-300 text-2xl font-bold shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              value={voteNum}
+            />
 
-        <button
-          className="flex w-12  items-center justify-center rounded  px-4 py-2 text-2xl border border-black/5 bg-white py-2 hover:bg-gray-50 hover:shadow-sm"
-          onClick={handleUpvote}
-        >
-          +
-        </button>
-        {/* <span>{downvotes} Downvotes</span> */}
-        {/* <span>{upvotes} Upvotes</span> */}
-      </div>
+            <button
+              className="flex w-12  items-center justify-center rounded  border border-black/5 bg-white px-4 py-2 py-2 text-2xl hover:bg-gray-50 hover:shadow-sm"
+              onClick={handleUpvote}
+            >
+              +
+            </button>
+            {/* <span>{downvotes} Downvotes</span> */}
+            {/* <span>{upvotes} Upvotes</span> */}
+          </div>
 
-      <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
-      <button
-          className="flex w-24 text-2xl font-bold  items-center justify-center border border-black/5 bg-white py-2 hover:bg-gray-50 hover:shadow-sm"
-          onClick={handleVote}
-        >
-          Vote
-        </button>
+          <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
+            <button
+              className="flex w-24 items-center justify-center  border border-black/5 bg-white py-2 text-2xl font-bold hover:bg-gray-50 hover:shadow-sm"
+              onClick={handleVote}
+            >
+              Vote
+            </button>
+          </div>
 
-      </div>
+          
+        </>
+      )}
     </>
   );
 };
