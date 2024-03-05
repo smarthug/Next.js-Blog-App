@@ -44,7 +44,7 @@ async function getComments(postId: string) {
 
 interface MainPostItemProps {
   post: PostWithCategoryWithProfile;
-  dao: boolean;
+  dao?: boolean;
 }
 
 const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
