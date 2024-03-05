@@ -11,6 +11,7 @@ import { useAccount } from "wagmi";
 import { createClient } from "@/utils/supabase/client";
 import { Session } from "@supabase/supabase-js";
 import { UpdateUserPoint } from "@/actions/vote/update-user-point";
+import { DivideCircle } from "lucide-react";
 
 interface DetailPostVoteProps {
   id: string;
@@ -162,6 +163,14 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
     <>
       {nftNum > 0 && (
         <>
+        <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
+            <div
+              className="flex w-24 items-center justify-center  border border-black/5 py-2 text-2xl font-bold hover:bg-gray-50 hover:shadow-sm"
+              
+            >
+              {point}
+            </div>
+          </div>
           <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
             <button
               className="flex w-12  items-center justify-center rounded  border border-black/5 bg-white px-4 py-2 py-2 text-2xl hover:bg-gray-50 hover:shadow-sm"
@@ -196,6 +205,8 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
               Vote
             </button>
           </div>
+
+          
         </>
       )}
     </>
