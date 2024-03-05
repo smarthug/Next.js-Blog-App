@@ -8,12 +8,17 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAccount } from "wagmi";
 
+import { createClient } from "@/utils/supabase/client";
+import { Session } from "@supabase/supabase-js";
+import { UpdateUserPoint } from "@/actions/vote/update-user-point";
+
 interface DetailPostVoteProps {
   id: string;
   point: number;
 }
 
 const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
+  const supabase = createClient();
   const [upvotes, setUpvotes] = useState<number>(0);
   const [downvotes, setDownvotes] = useState<number>(0);
 
@@ -23,6 +28,24 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
 
   const [nftNum, setNftNum] = useState<number>(0);
   const { address } = useAccount();
+
+
+  const [session, setSession] = useState<Session | null>(null);
+
+  // Check authentitication and bookmark states
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [session?.user.id, supabase.auth]);
 
   useEffect(() => {
     const fetchNFTNum = async () => {
@@ -88,18 +111,40 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
     //   toast.error(protectedEditorConfig.errorMessage);
     // }
 
+    if (session?.user.id) {
+
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .match({ id: session?.user.id })
+        .single();
+      // const post = {
+      //   title: protectedPostConfig.untitled,
+      //   user_id: session?.user.id,
+      // };
+
+      // const response = await CreatePost(post);
+
     console.log(id, voteNum);
     const response = await UpdateVote(id, point + voteNum);
+
+    const response2 = await UpdateUserPoint(session?.user.id, data.point - voteNum);
 
     if (response) {
       toast.success(voteUpdateConfig.successMessage);
 
       setVoteNum(0);
+
+      router.refresh();
+      // window.reload()
       // router.push(`/editor/posts?search=refresh`);
       // router.reload();
     } else {
       toast.error(voteUpdateConfig.errorMessage);
     }
+
+  }
 
     // setIsSaving(false);
     // setShowLoadingAlert(false);
