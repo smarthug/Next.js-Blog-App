@@ -245,8 +245,11 @@ export default async function PostPage({ params }: PostPageProps) {
             postId={post.id as string}
             comments={comments as CommentWithProfile[]}
           /> */}
-
-          <DetailPostVote id={slug} point={post?.point} />
+          {!(post?.published) && (
+            <DetailPostVote id={slug} point={post?.point} />
+          )
+            
+          }
         </div>
         <DetailPostScrollUpButton />
       </div>
