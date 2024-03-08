@@ -45,6 +45,23 @@ const LoginMenu = () => {
     fetchAvatar();
   }, [session, supabase]);
 
+
+
+  useEffect(() => {
+    async function fetchAvatar() {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .match({ id: session?.user.id })
+        .single<Profile>();
+      if (data) {
+        // setAvatarUrl(data.avatar_url ? data.avatar_url : "");
+        setPoint(data.point ? data.point : 0);
+      }
+    }
+    fetchAvatar();
+  });
+
   return (
     <>
       {session ? (
