@@ -21,7 +21,8 @@ const SharedBackButton: React.FC<BackButtonProps> = ({
         if (window.history.state && window.history.state.idx > 0) {
           router.back();
         } else {
-          router.push("/");
+          router.back();
+          // router.push("/");
         }
       }}
     >
