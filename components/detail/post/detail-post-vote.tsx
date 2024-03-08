@@ -1,17 +1,16 @@
 "use client";
 
+import { UpdateUserPoint } from "@/actions/vote/update-user-point";
 import { UpdateVote } from "@/actions/vote/update-vote";
 import { voteUpdateConfig } from "@/config/vote";
+import { createClient } from "@/utils/supabase/client";
 import { daoUtil } from "@/utils/web3/daoUtil";
+import { Session } from "@supabase/supabase-js";
+import { DivideCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAccount } from "wagmi";
-
-import { createClient } from "@/utils/supabase/client";
-import { Session } from "@supabase/supabase-js";
-import { UpdateUserPoint } from "@/actions/vote/update-user-point";
-import { DivideCircle } from "lucide-react";
 
 interface DetailPostVoteProps {
   id: string;
@@ -29,7 +28,6 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
 
   const [nftNum, setNftNum] = useState<number>(0);
   const { address } = useAccount();
-
 
   const [session, setSession] = useState<Session | null>(null);
 
@@ -113,8 +111,6 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
     // }
 
     if (session?.user.id) {
-
-
       const { data, error } = await supabase
         .from("profiles")
         .select("*")
@@ -127,25 +123,32 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
 
       // const response = await CreatePost(post);
 
-    console.log(id, voteNum);
-    const response = await UpdateVote(id, point + voteNum);
+      if (data.point < voteNum) {
+        toast.error("You don't have enough point");
+        return;
+      }
 
-    const response2 = await UpdateUserPoint(session?.user.id, data.point - voteNum);
+      console.log(id, voteNum);
+      const response = await UpdateVote(id, point + voteNum);
 
-    if (response) {
-      toast.success(voteUpdateConfig.successMessage);
+      const response2 = await UpdateUserPoint(
+        session?.user.id,
+        data.point - voteNum,
+      );
 
-      setVoteNum(0);
+      if (response) {
+        toast.success(voteUpdateConfig.successMessage);
 
-      router.refresh();
-      // window.reload()
-      // router.push(`/editor/posts?search=refresh`);
-      // router.reload();
-    } else {
-      toast.error(voteUpdateConfig.errorMessage);
+        setVoteNum(0);
+
+        router.refresh();
+        // window.reload()
+        // router.push(`/editor/posts?search=refresh`);
+        // router.reload();
+      } else {
+        toast.error(voteUpdateConfig.errorMessage);
+      }
     }
-
-  }
 
     // setIsSaving(false);
     // setShowLoadingAlert(false);
@@ -163,11 +166,8 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
     <>
       {nftNum > 0 && (
         <>
-        <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
-            <div
-              className="flex w-24 items-center justify-center  border border-black/5 py-2 text-2xl font-bold hover:bg-gray-50 hover:shadow-sm"
-              
-            >
+          <div className="flex  items-center justify-center space-x-4 rounded-md bg-gray-100 p-4">
+            <div className="flex w-24 items-center justify-center  border border-black/5 py-2 text-2xl font-bold hover:bg-gray-50 hover:shadow-sm">
               {point}
             </div>
           </div>
@@ -205,8 +205,6 @@ const DetailPostVote: React.FC<DetailPostVoteProps> = ({ id, point = 0 }) => {
               Vote
             </button>
           </div>
-
-          
         </>
       )}
     </>

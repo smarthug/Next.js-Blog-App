@@ -13,16 +13,16 @@ const MainDesktopNavigationMenu = ({daoMember}) => {
       <div className="hidden gap-x-6 md:flex">
         {mainCategoryConfig.map((category) => (
           <Link
-            // href={
-            //   category.slug === "/"
-            //     ? category.slug
-            //     : `/category/${category.slug}`
-            // }
             href={
-              
-                category.slug
-                
+              category.slug === "/"
+                ? category.slug
+                : `/category/${category.slug}`
             }
+            // href={
+              
+            //     category.slug
+                
+            // }
             key={v4()}
             className={cn(
               "relative inline-flex items-center rounded-full px-4 py-1.5 text-base font-semibold tracking-tight text-gray-500 antialiased ring-1 ring-transparent transition duration-200 [word-spacing:-5px] active:scale-[96%] active:ring-black/20",

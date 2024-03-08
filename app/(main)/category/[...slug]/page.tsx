@@ -84,12 +84,15 @@ export default async function CategoryPage({
   const category = mainCategoryConfig.find(
     (category) => category.slug === slug,
   );
+  console.log(category)
   // Fetch total pages
   const { count } = await supabase
-    .from("posts")
+    .from("news")
     .select("*", { count: "exact", head: true })
-    .eq("category_id", category?.id ? category?.id : "");
+    .eq("category", category?.id ? category?.id : "");
 
+
+    // console.log(count)
   // Pagination
   const limit = 10;
   const totalPages = count ? Math.ceil(count / limit) : 0;
@@ -108,13 +111,25 @@ export default async function CategoryPage({
     notFound;
   }
 
-  const { data, error } = await supabase
-    .from("posts")
-    .select(`*, categories(*), profiles(*)`)
-    .match({ category_id: category?.id, published: true })
+  // const { data, error } = await supabase
+  //   .from("news")
+  //   .select(`*, categories(*), profiles(*)`)
+  //   .match({ category: category?.id, published: false })
+  //   .order("created_at", { ascending: false })
+  //   .range(from, to)
+  //   .returns<PostWithCategoryWithProfile[]>();
+
+
+    const { data, error } = await supabase
+    .from("news")
+    .select(`*`)
+    .match({ category: category?.id, published: true })
     .order("created_at", { ascending: false })
     .range(from, to)
     .returns<PostWithCategoryWithProfile[]>();
+
+
+    // console.log(data)
 
   if (!data || error || !data.length) {
     notFound;
