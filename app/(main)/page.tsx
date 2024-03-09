@@ -72,7 +72,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
-      <div className="space-y-6">
+      <div className="space-y-2">
         {/* <div>Articles</div> */}
         <Suspense key={v4()} fallback={<MainPostItemLoading />}>
           
